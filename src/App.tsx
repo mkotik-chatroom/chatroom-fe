@@ -5,7 +5,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ padding: "0px 200px" }}>
       <ChatWindow />
     </div>
   );
