@@ -1,45 +1,61 @@
 import { useState, useEffect } from "react";
 import ChatMessage from "./ChatMessage";
-import axios from "axios";
-import socket from "./socket";
+import { ChatWindowProps, PlainFunction, MessageObject } from "./interfaces";
+import { connect } from "react-redux";
+import { setMessages } from "./actions";
 
-const ChatWindow = () => {
-  const [client, setClient] = useState<any>(socket());
+const ChatWindow = (props: any) => {
+  const { name, message, sendMessage, socket } = props;
   const [currentMessage, setCurrentMessage] = useState<string>("");
-  const [messages, setMessages] = useState<string[]>([]);
-  const handleSubmit: () => void = () => {
-    const newMessages = [...messages];
-    newMessages.push(currentMessage);
-    client.sendChat(newMessages);
+
+  const handleSubmit: PlainFunction = () => {
+    const messageObject = { name, message: currentMessage };
+    setCurrentMessage("");
+    sendMessage(messageObject);
   };
-  useEffect(() => {
-    setClient(socket());
-  }, []);
 
   useEffect(() => {
-    console.log(messages);
-  }, [messages]);
-
-  useEffect(() => {
-    if (client.socket.listeners("chat message").length < 1) {
-      client.socket.on("chat message", (msgs: string[]) => {
-        setMessages(msgs);
+    if (!socket._callbacks.$message) {
+      console.log(socket);
+      socket.on("message", (msg: MessageObject) => {
+        console.log(msg);
+        props.setMessages(msg);
       });
     }
-  }, [client]);
+  }, [socket]);
 
   return (
     <div>
       <div className="chat-container">
-        <ChatMessage name="Marat" message="hey" sentByMe={true} />
-        <ChatMessage name="Stacy" message="whats up" sentByMe={false} />
+        {props.messages.map((msg: any) => (
+          <ChatMessage
+            name={msg.name}
+            message={msg.message}
+            sentByMe={msg.name === name}
+          />
+        ))}
       </div>
       <div className="msg-input-wrap">
-        <input className="msg-input" />
-        <button className="msg-button">Send</button>
+        <input
+          value={currentMessage}
+          onChange={(e) => setCurrentMessage(e.target.value)}
+          onKeyDown={(e) => (e.key === "Enter" ? handleSubmit() : null)}
+          className="msg-input"
+        />
+        <button onClick={handleSubmit} className="msg-button">
+          Send
+        </button>
       </div>
     </div>
   );
 };
 
-export default ChatWindow;
+const mapStateToProps = (state: any) => {
+  return {
+    ...state,
+  };
+};
+
+export default connect<any, any, any>(mapStateToProps, { setMessages })(
+  ChatWindow
+);
