@@ -9,6 +9,8 @@ phases:
       - apt install -y nodejs
 
       # install yarn
+      - echo NODE VERSION
+      - node -v
       - echo installing yarn...
       - corepack enable
   pre_build:
