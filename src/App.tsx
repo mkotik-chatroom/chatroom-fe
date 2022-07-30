@@ -1,12 +1,25 @@
-import React from "react";
-import logo from "./logo.svg";
+import { useState } from "react";
 import ChatWindow from "./ChatWindow";
+import NameInput from "./NameInput";
+import socket from "./socket";
 import "./App.css";
 
 function App() {
+  const [name, setName] = useState<string>("");
+
+  const handleNameSubmit: (inputValue: string) => void = (inputValue) => {
+    setName(inputValue);
+  };
+  socket();
   return (
-    <div className="App" style={{ padding: "0px 200px" }}>
-      <ChatWindow />
+    <div className="app">
+      <div>
+        {name ? (
+          <ChatWindow />
+        ) : (
+          <NameInput handleNameSubmit={handleNameSubmit} />
+        )}
+      </div>
     </div>
   );
 }

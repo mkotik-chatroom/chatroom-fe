@@ -1,38 +1,140 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  color: rgb(38, 37, 37);
+  margin: 0px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: rgb(255, 255, 255);
+  height: 100vh;
+  padding: 0px 250px;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app {
+  width: 100%;
+  background-color: rgba(249, 238, 215, 0.868);
+  background: linear-gradient(
+      217deg,
+      rgba(243, 202, 114, 0.868),
+      rgba(249, 238, 215, 0.868) 70.71%
+    ),
+    linear-gradient(
+      127deg,
+      rgba(242, 120, 230, 0.8),
+      rgba(10, 106, 151, 0.5) 70.71%
+    ),
+    linear-gradient(336deg, rgba(255, 0, 230, 0.8), rgba(0, 0, 255, 0) 70.71%);
+  height: 100vh;
+  padding: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.name-input-label {
+  font-size: 20px;
+  width: 100%;
+}
+
+.name-input-wrap-wrap {
+  width: 70%;
+  height: 100vh;
+  margin: auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.name-input-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.name-input {
+  width: 100%;
+  height: 30px;
+  margin: 0px;
+  margin-right: 10px;
+  border: 1px solid rgb(171, 171, 171);
+  border-radius: 3px;
+  padding: 0px 10px;
+}
+
+.name-input-button {
+  width: 100px;
+  height: 30px;
+  margin: 0px;
+  border: 0;
+  border-radius: 3px;
+  background-color: rgb(217, 120, 241);
+  color: rgb(38, 37, 37);
+  cursor: pointer;
+}
+
+.chat-container {
+  width: 100%;
+  max-height: 90vh;
+  aspect-ratio: 1;
+  background-color: rgb(255, 255, 255);
+  padding: 30px 100px;
+  border-radius: 10px;
+  box-shadow: inset 0px 1px 20px #cfcdcd93;
+  overflow: scroll;
+}
+
+.msg-input {
+  width: 100%;
+  height: 30px;
+  margin: 0px;
+  margin-right: 10px;
+  border: 1px solid rgb(171, 171, 171);
+  border-radius: 3px;
+  padding: 0px 10px;
+}
+
+.msg-button {
+  width: 100px;
+  height: 30px;
+  margin: 0px;
+  border: 0;
+  border-radius: 3px;
+  background-color: rgb(217, 120, 241);
+  color: rgb(38, 37, 37);
+  cursor: pointer;
+}
+
+.msg-input-wrap {
+  margin-top: 15px;
+  display: flex;
+}
+
+.chat-message {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.chat-message-name {
+  font-weight: bold;
+  font-size: 12px;
+  color: rgb(169, 169, 169);
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+@media (max-width: 1500px) {
+  body {
+    padding: 0 180px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 900px) {
+  body {
+    padding: 0px;
   }
 }
