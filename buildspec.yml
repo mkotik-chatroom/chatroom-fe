@@ -3,23 +3,18 @@ version: 0.2
 phases:
   install:
     commands:
-      # install node 16
       - echo installing node...
       - curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
       - sudo apt-get install -y nodejs
-
-      # install yarn
       - echo NODE VERSION
       - node -v
       - echo installing yarn...
       - corepack enable
   pre_build:
     commands:
-      # install dependencies
       - echo installing dependencies...
       - yarn install
   build:
     commands:
-      #test
-      #build
+      # - yarn test
       - yarn build
