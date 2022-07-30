@@ -10,21 +10,20 @@ function App() {
   const [name, setName] = useState<string>("");
 
   useEffect(() => {
+    console.log("setting socket");
     if (!socket) {
       setSocket(
-        io(
-          "http://chatroombe-env.eba-mtuquxgv.us-east-2.elasticbeanstalk.com/",
-          {
-            extraHeaders: {
-              "Access-Control-Allow-Credentials": "true",
-            },
-          }
-        )
+        io("http://localhost:8000", {
+          extraHeaders: {
+            "Access-Control-Allow-Credentials": "true",
+          },
+        })
       );
     }
   }, []);
 
   const sendMessage = (messageObject: MessageObject) => {
+    console.log("emitting message");
     socket.emit("message", messageObject);
   };
 

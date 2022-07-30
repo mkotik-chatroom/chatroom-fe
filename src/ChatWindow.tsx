@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { setMessages } from "./actions";
 
 const ChatWindow = (props: any) => {
-  const { name, message, sendMessage, socket } = props;
+  const { name, sendMessage, socket } = props;
   const [currentMessage, setCurrentMessage] = useState<string>("");
 
   const handleSubmit: PlainFunction = () => {
