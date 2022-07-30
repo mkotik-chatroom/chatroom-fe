@@ -12,11 +12,14 @@ function App() {
   useEffect(() => {
     if (!socket) {
       setSocket(
-        io("http://localhost:5050/", {
-          extraHeaders: {
-            "Access-Control-Allow-Credentials": "true",
-          },
-        })
+        io(
+          "http://chatroombe-env.eba-mtuquxgv.us-east-2.elasticbeanstalk.com/",
+          {
+            extraHeaders: {
+              "Access-Control-Allow-Credentials": "true",
+            },
+          }
+        )
       );
     }
   }, []);
