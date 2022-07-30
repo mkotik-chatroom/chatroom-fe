@@ -9,9 +9,11 @@ const ChatWindow = (props: any) => {
   const [currentMessage, setCurrentMessage] = useState<string>("");
 
   const handleSubmit: PlainFunction = () => {
-    const messageObject = { name, message: currentMessage };
-    setCurrentMessage("");
-    sendMessage(messageObject);
+    if (currentMessage) {
+      const messageObject = { name, message: currentMessage };
+      setCurrentMessage("");
+      sendMessage(messageObject);
+    }
   };
 
   useEffect(() => {
