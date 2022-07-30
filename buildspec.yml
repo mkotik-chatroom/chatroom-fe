@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      # install node 16
+      - echo installing node...
+      - curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+      - apt install -y nodejs
+      # install yarn
+      - echo installing yarn...
+      - corepack enable
+  pre_build:
+    commands:
+      # install dependencies
+      - echo installing dependencies...
+      - yarn install
+  build:
+    commands:
+      #test
+      #build
+      - yarn build
