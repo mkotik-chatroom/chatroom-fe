@@ -5,9 +5,6 @@ phases:
     commands:
       # install node 16
       - echo installing node...
-      # - curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-      # - apt install -y nodejs
-
       - curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
       - sudo apt-get install -y nodejs
 
