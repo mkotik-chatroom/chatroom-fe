@@ -1,9 +1,9 @@
-import React, { SetStateAction, useState } from "react";
+import { useState } from "react";
 
 const ChatWindow = () => {
-  const [currentMessage, setCurrentMessage] = useState("");
+  const [currentMessage, setCurrentMessage] = useState<string>("");
   const [messages, setMessages] = useState<string[]>([]);
-  const handleSubmit = () => {
+  const handleSubmit: () => void = () => {
     const newMessages = [...messages];
     newMessages.push(currentMessage);
     setMessages(newMessages);
