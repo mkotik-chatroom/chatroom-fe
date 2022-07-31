@@ -119,7 +119,8 @@ code {
   transition: all 0.15s;
 }
 
-.msg-button:hover {
+.msg-button:hover,
+.name-input-button:hover {
   background-color: rgb(187, 106, 207);
 }
 

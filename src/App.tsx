@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Socket } from "socket.io-client";
 import ChatWindow from "./ChatWindow";
 import NameInput from "./NameInput";
 import io from "socket.io-client";
@@ -6,14 +7,15 @@ import { MessageObject } from "./interfaces";
 import "./App.css";
 
 function App() {
-  const [socket, setSocket] = useState<any>(null);
+  const [socket, setSocket] = useState<Socket | null>(null);
   const [name, setName] = useState<string>("");
 
   useEffect(() => {
     if (!socket) {
       setSocket(
         io(
-          "http://chatroombe-env.eba-mtuquxgv.us-east-2.elasticbeanstalk.com/",
+          // "http://chatroombe-env.eba-mtuquxgv.us-east-2.elasticbeanstalk.com/",
+          "http://localhost:8000",
           {
             extraHeaders: {
               "Access-Control-Allow-Credentials": "true",
@@ -22,13 +24,13 @@ function App() {
         )
       );
     }
-  }, []);
+  }, [socket]);
 
-  const sendMessage = (messageObject: MessageObject) => {
-    socket.emit("message", messageObject);
+  const sendMessage = (messageObject: MessageObject): void => {
+    if (socket) socket.emit("message", messageObject);
   };
 
-  const handleNameSubmit: (inputValue: string) => void = (inputValue) => {
+  const handleNameSubmit = (inputValue: string): void => {
     setName(inputValue);
   };
   return (
