@@ -11,6 +11,20 @@ body {
   overflow: hidden;
 }
 
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
 .app {
   width: 100%;
   background-color: rgba(249, 238, 215, 0.868);
@@ -73,10 +87,9 @@ body {
 
 .chat-container {
   width: 100%;
-  max-height: 90vh;
-  aspect-ratio: 1;
+  height: 93vh;
   background-color: rgb(255, 255, 255);
-  padding: 30px 100px;
+  padding: 30px 2%;
   border-radius: 10px;
   box-shadow: inset 0px 1px 20px #cfcdcd93;
   overflow: scroll;
@@ -90,6 +103,7 @@ body {
   border: 1px solid rgb(171, 171, 171);
   border-radius: 3px;
   padding: 0px 10px;
+  box-shadow: inset 0px 1px 20px #cfcdcd93;
 }
 
 .msg-button {
@@ -101,6 +115,13 @@ body {
   background-color: rgb(217, 120, 241);
   color: rgb(38, 37, 37);
   cursor: pointer;
+  box-shadow: 0px 1px 5px #68686893;
+  transition: all 0.15s;
+}
+
+.msg-button:hover,
+.name-input-button:hover {
+  background-color: rgb(187, 106, 207);
 }
 
 .msg-input-wrap {

@@ -1,33 +1,39 @@
 import { useState, useEffect } from "react";
 import ChatMessage from "./ChatMessage";
-import { ChatWindowProps, PlainFunction, MessageObject } from "./interfaces";
+import {
+  ChatWindowProps,
+  PlainFunction,
+  MessageObject,
+  ReduxState,
+} from "./interfaces";
 import { connect } from "react-redux";
 import { setMessages } from "./actions";
 
-const ChatWindow = (props: any) => {
-  const { name, sendMessage, socket } = props;
+const ChatWindow = (props: ChatWindowProps) => {
+  const { name, sendMessage, socket, messages, setMessages } = props;
   const [currentMessage, setCurrentMessage] = useState<string>("");
 
   const handleSubmit: PlainFunction = () => {
-    const messageObject = { name, message: currentMessage };
-    setCurrentMessage("");
-    sendMessage(messageObject);
+    if (currentMessage) {
+      const messageObject = { name, message: currentMessage };
+      setCurrentMessage("");
+      sendMessage(messageObject);
+    }
   };
 
   useEffect(() => {
-    if (!socket._callbacks.$message) {
-      console.log(socket);
+    console.log(socket);
+    if (!socket.listeners("message").length) {
       socket.on("message", (msg: MessageObject) => {
-        console.log(msg);
-        props.setMessages(msg);
+        setMessages(msg);
       });
     }
-  }, [socket]);
+  }, [socket, setMessages]);
 
   return (
     <div>
       <div className="chat-container">
-        {props.messages.map((msg: any) => (
+        {messages.map((msg) => (
           <ChatMessage
             name={msg.name}
             message={msg.message}
@@ -50,12 +56,12 @@ const ChatWindow = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: ReduxState) => {
   return {
     ...state,
   };
 };
 
-export default connect<any, any, any>(mapStateToProps, { setMessages })(
-  ChatWindow
-);
+export default connect<any, any, any, any>(mapStateToProps, {
+  setMessages,
+})(ChatWindow);

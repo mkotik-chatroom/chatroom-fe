@@ -1,8 +1,4 @@
-interface ChatMessageProps {
-  name: string;
-  message: string;
-  sentByMe: boolean;
-}
+import { ChatMessageProps } from "./interfaces";
 
 const ChatMessage = ({ name, message, sentByMe }: ChatMessageProps) => {
   return (
