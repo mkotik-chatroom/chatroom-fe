@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { Socket } from "socket.io-client";
+import io, { Socket } from "socket.io-client";
 import ChatWindow from "./ChatWindow";
 import NameInput from "./NameInput";
-import io from "socket.io-client";
 import { MessageObject } from "./interfaces";
 import "./App.css";
 
@@ -14,8 +13,8 @@ function App() {
     if (!socket) {
       setSocket(
         io(
-          // "http://chatroombe-env.eba-mtuquxgv.us-east-2.elasticbeanstalk.com/",
-          "http://localhost:8000",
+          "http://chatroombe-env.eba-mtuquxgv.us-east-2.elasticbeanstalk.com/",
+          // "http://localhost:8000",
           {
             extraHeaders: {
               "Access-Control-Allow-Credentials": "true",
@@ -30,6 +29,10 @@ function App() {
     if (socket) socket.emit("message", messageObject);
   };
 
+  const sendTypingNotice = (): void => {
+    if (socket) socket.emit("typing");
+  };
+
   const handleNameSubmit = (inputValue: string): void => {
     setName(inputValue);
   };
@@ -37,7 +40,12 @@ function App() {
     <div className="app">
       <div>
         {name ? (
-          <ChatWindow name={name} sendMessage={sendMessage} socket={socket} />
+          <ChatWindow
+            name={name}
+            sendMessage={sendMessage}
+            sendTypingNotice={sendTypingNotice}
+            socket={socket}
+          />
         ) : (
           <NameInput handleNameSubmit={handleNameSubmit} />
         )}
