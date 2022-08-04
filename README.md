@@ -6,7 +6,7 @@ WhipChat is a video chat application that seeks to connect users with peers in t
 
 This repository holds the frontend code to WhipChat.
 
-**_[Live Project](https://chatroom-fe.s3.us-east-2.amazonaws.com/index.html)_**
+**_[Live Project](http://chatroom-fe.s3.us-east-2.amazonaws.com/index.html)_**
 
 ## Installation
 
