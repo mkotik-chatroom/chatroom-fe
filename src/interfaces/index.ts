@@ -9,6 +9,7 @@ export interface MessageObject {
 export interface ChatWindowProps {
   name: string;
   sendMessage: (msg: MessageObject) => void;
+  sendTypingNotice: PlainFunction;
   socket: Socket;
   messages: MessageObject[];
   setMessages: ReduxFunction<MessageObject>;
