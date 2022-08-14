@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import io, { Socket } from "socket.io-client";
-import ChatWindow from "./ChatWindow";
-import NameInput from "./NameInput";
+import ChatWindow from "./components/ChatWindow";
+import NameInput from "./components/NameInput";
 import { MessageObject } from "./interfaces";
 import "./App.css";
 

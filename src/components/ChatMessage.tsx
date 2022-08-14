@@ -1,4 +1,4 @@
-import { ChatMessageProps } from "./interfaces";
+import { ChatMessageProps } from "../interfaces";
 
 const ChatMessage = ({ name, message, sentByMe }: ChatMessageProps) => {
   return (

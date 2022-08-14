@@ -5,9 +5,9 @@ import {
   PlainFunction,
   MessageObject,
   ReduxState,
-} from "./interfaces";
+} from "../interfaces";
 import { connect } from "react-redux";
-import { setMessages } from "./actions";
+import { setMessages } from "../actions";
 
 const ChatWindow = (props: ChatWindowProps) => {
   const { name, sendMessage, sendTypingNotice, socket, messages, setMessages } =
