@@ -1,4 +1,4 @@
-![alt text](./banner.png)
+![alt text](./assets/banner.png)
 
 # WhipChat
 
