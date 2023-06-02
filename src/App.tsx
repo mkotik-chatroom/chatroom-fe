@@ -8,7 +8,7 @@ import "./App.css";
 function App() {
   const [socket, setSocket] = useState<Socket | null>(null);
   const [name, setName] = useState<string>("");
-
+  // test
   useEffect(() => {
     if (!socket) {
       setSocket(
