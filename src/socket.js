@@ -4,7 +4,7 @@ const socket = () => {
   const port =
     process.env.NODE_ENV === "development"
       ? "http://localhost:8000"
-      : "http://chatroombe-env.eba-mtuquxgv.us-east-2.elasticbeanstalk.com/";
+      : "https://chatroom-be-production.up.railway.app/";
   const socket = io(port, {
     extraHeaders: {
       "Access-Control-Allow-Credentials": "true",

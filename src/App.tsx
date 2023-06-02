@@ -13,7 +13,7 @@ function App() {
     if (!socket) {
       setSocket(
         io(
-          "http://chatroombe-env.eba-mtuquxgv.us-east-2.elasticbeanstalk.com/",
+          "https://chatroom-be-production.up.railway.app/",
           // "http://localhost:8000",
           {
             extraHeaders: {
